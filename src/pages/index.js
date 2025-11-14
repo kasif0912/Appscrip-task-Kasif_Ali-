@@ -25,8 +25,19 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("https://appscrip-task-kasif-lpywaoazv-kasifalis-projects.vercel.app/api/product");
-  const products = await res.json();
-  return { props: { products } };
+  try {
+
+    const res = await fetch(`https://appscrip-task-kasif-5014ohg6q-kasifalis-projects.vercel.app/api/product`);
+    const data = await res.json();
+
+    return {
+      props: {
+        products: Array.isArray(data) ? data : [],
+      },
+    };
+  } catch (error) {
+    console.error("SSR Error:", error);
+    return { props: { products: [] } };
+  }
 }
 
