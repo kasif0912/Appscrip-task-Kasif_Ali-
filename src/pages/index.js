@@ -28,7 +28,7 @@ export async function getServerSideProps() {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-    const res = await fetch(`${baseUrl}/api/product`, {
+    const res = await fetch(`${baseUrl}/api/products`, {
       cache: "no-store",
     });
 
@@ -46,4 +46,3 @@ export async function getServerSideProps() {
     return { props: { products: [] } };
   }
 }
-
