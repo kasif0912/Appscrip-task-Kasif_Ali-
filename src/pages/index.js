@@ -25,7 +25,7 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("https://appscrip-task-kasif-lpywaoazv-kasifalis-projects.vercel.app/api/products");
+  const res = await fetch("https://appscrip-task-kasif-lpywaoazv-kasifalis-projects.vercel.app/api/product");
   const products = await res.json();
   return { props: { products } };
 }
