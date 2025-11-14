@@ -26,8 +26,10 @@ export default function Home({ products }) {
 
 export async function getServerSideProps() {
   try {
+    const baseUrl = process.env.BASE_URL;
 
-    const res = await fetch(`https://appscrip-task-kasif-5014ohg6q-kasifalis-projects.vercel.app/api/product`);
+    const res = await fetch(`${baseUrl}/api/product`);
+
     const data = await res.json();
 
     return {
@@ -40,4 +42,3 @@ export async function getServerSideProps() {
     return { props: { products: [] } };
   }
 }
-
