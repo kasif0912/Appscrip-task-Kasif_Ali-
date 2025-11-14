@@ -1,0 +1,144 @@
+.products-section {
+  padding: 20px 50px;
+}
+
+/* --- Topbar --- */
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  /* border: 1px solid red; */
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.filter-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.hide-filter {
+  font-size: 12px;
+  color: #888;
+  cursor: pointer;
+}
+
+.sort-section {
+  position: relative;
+}
+
+.sort-dropdown {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 13px;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+/* --- Main content (filters + grid) --- */
+.products-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  flex: 1;
+}
+.no-filter .product-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1200px) {
+  .no-filter .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .product-grid img {
+    height: 280px;
+  }
+}
+
+@media (max-width: 992px) {
+  .products-section {
+    padding: 15px 30px;
+  }
+
+  .products-content {
+    flex-direction: column;
+  }
+
+  .filter-header {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+    justify-content: space-between;
+  }
+
+  .filter-title {
+    display: none; /* Hide item count */
+  }
+
+  .hide-filter {
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .sort-dropdown {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .no-filter .product-grid,
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-grid img {
+    height: 240px;
+  }
+}
+
+@media (max-width: 576px) {
+  .products-section {
+    padding: 10px 20px;
+  }
+
+  .no-filter .product-grid,
+  .product-grid {
+    grid-template-columns: fr;
+  }
+
+  .product-grid img {
+    height: 220px;
+  }
+
+  .filter-header {
+    padding: 10px 0;
+  }
+
+  .hide-filter {
+    font-size: 14px;
+  }
+
+  .sort-dropdown {
+    font-size: 14px;
+  }
+}
