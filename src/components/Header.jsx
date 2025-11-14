@@ -17,7 +17,7 @@ export default function Header() {
           >
             ☰
           </button>
-          <Image src="/logo.png" alt="Logo" width={30} height={30} />
+          <Image src="/Logo.png" alt="Logo" width={30} height={30} />
         </div>
 
         {/* CENTER SECTION */}
