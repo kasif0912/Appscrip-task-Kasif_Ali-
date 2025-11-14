@@ -25,7 +25,29 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("https://fakestoreapi.com/products");
-  const products = await res.json();
-  return { props: { products } };
+  try {
+    const res = await fetch("https://fakestoreapi.com/products");
+
+    // If API fails or returns HTML, handle it
+    if (!res.ok) {
+      console.error("API returned non-200 code:", res.status);
+      return { props: { products: [] } };
+    }
+
+    const text = await res.text();
+    let products = [];
+
+    try {
+      products = JSON.parse(text); 
+    } catch (error) {
+      console.error("API did not return JSON:", text);
+      return { props: { products: [] } };
+    }
+
+    return { props: { products } };
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { props: { products: [] } };
+  }
 }
+
