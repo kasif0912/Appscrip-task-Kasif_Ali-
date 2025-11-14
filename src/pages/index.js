@@ -25,20 +25,8 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps() {
-  try {
-    const baseUrl = process.env.BASE_URL;
-
-    const res = await fetch(`${baseUrl}/api/product`);
-
-    const data = await res.json();
-
-    return {
-      props: {
-        products: Array.isArray(data) ? data : [],
-      },
-    };
-  } catch (error) {
-    console.error("SSR Error:", error);
-    return { props: { products: [] } };
-  }
+  const res = await fetch("https://fakestoreapi.com/products");
+  const products = await res.json();
+  // console.log(products);
+  return { props: { products } };
 }
